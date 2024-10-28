@@ -88,6 +88,22 @@ public class LinkedList<T> implements Iterable<T> {
         }
     }
 
+    public void removePrimeiro() {
+        if (this.front == null) {
+            throw new NoSuchElementException("A lista está vazia.");
+        }
+
+        if (this.front == this.rear) {
+            this.front = null;
+            this.rear = null;
+        } else {
+            Node<T> temp = this.front;
+            this.front = this.front.getNextNode();
+            temp.setNextNode(null);
+        }
+        this.size--;
+    }
+
     public Node<T> getNode(int position) {
         Node<T> current = this.front;
         for (int i = 0; i < position; i++) {
